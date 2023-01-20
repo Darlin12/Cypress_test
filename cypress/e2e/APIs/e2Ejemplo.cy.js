@@ -20,22 +20,9 @@ describe('loguear - basic Auth y Auth con Form',()=>{
     })
 
     it('Logueo mediante form con método POST',()=>{
-        cy.visit('https://the-internet.herokuapp.com/')
-        cy.request({
-            method: "POST",
-            form: true,
-            url: '/authenticate',
-            body:{ 
-                username: 'tomsmith',
-                password: 'SuperSecretPassword!'
-            }
-        })
-        cy.visit('https://the-internet.herokuapp.com/secure')
-        cy.getCookie('rack.session').should('exist')
+      cy.login()
         cy.get('.subheader').should('include.text', 'Welcome to the Secure Area. When you are done click logout below.')
         
-      
-
 
     })
 })
